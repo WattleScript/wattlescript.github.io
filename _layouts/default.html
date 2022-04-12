@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>{{ page.title }} - {{ site.title }}</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="/assets/css/normalize.css"/>
+    <link href="https://fonts.googleapis.com/css?family=Libre+Franklin&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Inconsolata&display=swap" rel="stylesheet"> 
+    <link rel="stylesheet" href="/assets/css/main.css"/>
+    <link rel="stylesheet" href="/assets/css/syntax.css"/>
+    <link rel="shortcut icon" href="favicon.ico" />
+    
+    <script type="text/javascript">
+//Small script to do the fixed header
+function findOffset(element) {
+  var top = 0, left = 0;
+
+  do {
+    top += element.offsetTop  || 0;
+    left += element.offsetLeft || 0;
+    element = element.offsetParent;
+  } while(element);
+
+  return {
+    top: top,
+    left: left
+  };
+}
+window.onload = function () {
+  var stickyHeader = document.getElementById('nav');
+  var contentPadding = document.getElementById('contentpadding');
+  var padHeight = stickyHeader.offsetHeight + "px";
+  contentPadding.style.height = padHeight;
+  var headerOffset = findOffset(stickyHeader);
+  window.onscroll = function() {
+    var bodyScrollTop = document.documentElement.scrollTop || document.body.scrollTop;
+    if (bodyScrollTop > headerOffset) {
+      stickyHeader.classList.add('fixednav');
+    } else {
+      stickyHeader.classList.remove('fixednav');
+    }
+  };
+};
+  </script>
+  </head>
+  <body>
+    <div class="headerfill">
+    <div class="headerbottom">
+        {% include logo.html %}
+        <nav id="nav">
+            {% include nav.html %}
+        </nav>
+    </div>
+    </div>
+    <div id="contentpadding" class="responsivepad"></div>
+    <div id="page">
+    <div id="contentwrap">
+    {{ content }}
+    </div>
+    </div>
+    <script type="text/javascript" src="/assets/js/lightbox.js"></script>
+    <link rel="stylesheet" href="/assets/css/lightbox.css">
+    </div>
+  </body>
+</html>

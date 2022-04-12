@@ -1,0 +1,186 @@
+body, html {
+    font-family: 'Libre Franklin', sans-serif;
+    background: #ebe4cc;
+    color: #1c1c1c;
+}
+pre, code {
+    font-family: 'Inconsolata', monospace;
+}
+div.highlight {
+    padding: 0.3em 1em;
+}
+a {
+    color: #188d8f;
+}
+h1 a {
+  text-decoration: none;   
+}
+ul li { 
+    line-height: 2;
+}
+nav {
+    width: 100%;
+    background: black;
+    border-top: 1px solid #555;
+    border-bottom: 1px solid #555;
+}
+
+nav ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background: #444;
+    line-height: 1.15;
+}
+
+nav ul li {
+    float: left;
+    line-height: 1.15;
+}
+nav ul li a {
+    display: block;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+    color: whitesmoke;
+}
+
+nav ul li a:hover {
+    background-color: #111;
+}
+
+
+.headerbottom {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    width: 100%;
+}
+#contentwrap {
+    max-width: 740px;
+    margin-left: auto;
+    margin-right: auto;
+}
+.fixednav {
+    position: fixed;
+    top: 0;
+}
+.menutext {
+    display: none;
+}
+.menucheck {
+    display: none;
+}
+
+.github-icon {
+    mask: url(/assets/images/github.svg);
+    mask-size: cover;
+    -webkit-mask-image: url(/assets/images/github.svg);
+    -webkit-mask-size: cover;
+    width: 20px;
+    height: 20px;
+    background: white;
+    display: inline-block;
+    text-indent:-9999px;
+}
+
+.site-title {
+    text-transform: uppercase;
+    text-shadow: 2px 2px black;
+    margin-left: 0.5rem;
+    text-decoration: none;
+    color: #1c1c1c;
+}
+.fancybox {
+    display: block;
+    width: 200px;
+    height: 200px;
+    background: black;
+    margin-left: auto;
+    margin-right: auto;
+    position: relative;
+}
+.screenshot {
+    margin: 2px;
+    display: inline-block;
+}
+.fancybox img {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    margin: auto;
+}
+
+.headerfill {
+    position: relative;
+    height: 200px;
+    width: 100%;
+}
+article {
+    border-bottom: 1px solid #555;
+    margin-bottom: 4px;
+}
+.pagination {
+    width: 100%;
+    text-align: center;
+}
+.current_page {
+    font-weight: bold;
+}
+.next_page, .prev_page, .different_page {
+    text-decoration: none;
+}
+@media screen and (max-width: 520px) {
+    nav ul li {
+        float: none;
+        display: none;
+    }
+    nav {
+        max-height: 48px;
+    }
+    nav ul {
+        position: relative;
+        z-index: 900;
+    }
+    .landingfill {
+        height: 200px;
+        background-image: url(/assets/images/header.jpeg);
+    }
+    .landingfill > figure {
+        display: none;
+    }
+    .landingpage {
+        height: auto;
+    }
+    .github-icon {
+        background: none;
+        mask: none;
+        width: auto; height: auto;
+        text-indent: 0;
+    }
+    .patreon-icon {
+        background: none;
+        mask: none;
+        width: auto; height: auto;
+        text-indent: 0;
+    }
+    .menutext {
+        display: block;
+        text-align: center;
+        padding: 14px 16px;
+        text-decoration: none;
+        color: whitesmoke;
+    }
+    .menucheck:checked ~ li {
+        display: block;
+    }
+    .fixednav {
+        position: relative;
+    }
+    .responsivepad {
+        display: none;
+    }
+}
+

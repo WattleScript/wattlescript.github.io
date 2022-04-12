@@ -1,0 +1,8 @@
+ <ul>
+    <input id="menutoggle" class="menucheck" type="checkbox">
+    <label for="menutoggle" class="menutext">Menu</label>
+    {% for item in site.data.navlist.docs %}
+        <li><a href="{{ item.url }}">{{ item.title }}</a></li>
+    {% endfor %}
+    <li><a href="https://github.com/Librelancer/moonsharp"><div class="github-icon">Github</div></a></li>
+ </ul>
