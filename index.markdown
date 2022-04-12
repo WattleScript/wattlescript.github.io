@@ -3,7 +3,7 @@ layout: default
 title: Home
 ---
 
-Find us on [GitHub](https://github.com/Librelancer/moonsharp)
+Find us on [GitHub](https://github.com/WattleScript/wattlescript)
 
 <hr/>
 
