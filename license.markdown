@@ -5,7 +5,7 @@ title: License
 
 # BSD 3-Clause License
 
-Copyright (c) 2014-2022 The MoonSharp Authors, as shown by the AUTHORS file.
+Copyright (c) 2014-2022 The WattleScript Authors, as shown by the AUTHORS file.
 All rights reserved.
 
 Redistribution and use in source and binary forms, with or without
