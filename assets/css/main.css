@@ -196,6 +196,10 @@ pre.highlight code {
     margin: 0;
 }
 
+.logoImg {
+    height: 3.5em;
+}
+
 @media screen and (min-width: 980px) {
     .headerbottom {
         position: absolute;
@@ -211,6 +215,10 @@ pre.highlight code {
 }
 
 @media screen and (max-width: 980px) {
+    .logoImg {
+        height: 2.5em;
+    }
+
     nav ul li:not(.renderOnSm) {
         float: none;
         display: none;
@@ -259,8 +267,8 @@ pre.highlight code {
     }
 
     #contentwrap p, #contentwrap h1, #contentwrap h2, #contentwrap h3, #contentwrap h4  {
-        padding-left: 6px;
-        padding-right: 6px;
+        margin-left: 8px;
+        margin-right: 8px;
     }
 
     .github-icon { 
@@ -268,7 +276,7 @@ pre.highlight code {
     }
 
     div.highlight {
-        padding: 1px 6px 1px 6px;
+        padding: 1px 8px 1px 8px;
     }
 
     #contentwrap h3 {
