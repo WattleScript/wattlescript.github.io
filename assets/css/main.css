@@ -288,6 +288,10 @@ pre.highlight code {
     nav ul.navChecked li {
         display: block;
     }
+
+    .m10sm {
+        margin-top: 10px;
+    }
 }
 
 @media (prefers-color-scheme: light) {
