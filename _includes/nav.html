@@ -1,8 +1,6 @@
- <ul>
-    <li>
-        <input id="menutoggle" class="menucheck" type="checkbox">
-    </li>
-    <li>
+ <ul id="navUl">
+    <li class="renderOnSm">
+        <input id="menutoggle" class="menucheck" type="checkbox" onclick="toggleNav()">
         <label for="menutoggle" class="menutext">Menu</label>
     </li>
     {% for item in site.data.navlist.docs %}
@@ -14,3 +12,8 @@
         </a>
     </li>
  </ul>
+<script>
+    function toggleNav() {
+        document.getElementById("navUl").classList.toggle("navChecked");
+    }
+</script>

@@ -61,7 +61,7 @@ nav ul {
     line-height: 1.15;
 }
 
-nav ul li {
+nav ul li:not(.renderOnSm) {
     float: left;
     line-height: 1.15;
 }
@@ -211,7 +211,7 @@ pre.highlight code {
 }
 
 @media screen and (max-width: 980px) {
-    nav ul li {
+    nav ul li:not(.renderOnSm) {
         float: none;
         display: none;
     }
@@ -251,9 +251,6 @@ pre.highlight code {
         text-decoration: none;
         color: whitesmoke;
     }
-    .menucheck:checked ~ li {
-        display: block;
-    }
     .fixednav {
         position: relative;
     }
@@ -286,6 +283,10 @@ pre.highlight code {
     .site-title {
         display: flex;
         justify-content: center;
+    }
+
+    nav ul.navChecked li {
+        display: block;
     }
 }
 
