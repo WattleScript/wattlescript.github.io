@@ -1,8 +1,36 @@
+:root {
+    --pageBg: #ebe4cc;
+    --textDefault: #1c1c1c;
+    --linkDeafult:#188d8f;
+    --navBg: #444;
+    --navBorder: #555;
+    --navBgHover: #111;
+    --borderMuted: #b7b79a;
+}
+
+@media (prefers-color-scheme: dark) {
+    :root {
+        --pageBg: rgb(13, 17, 23);
+        --textDefault: rgb(201, 209, 217);
+        --linkDefault: #58a6ff;
+        --navBg: #1a222f;
+        --navBorder: #1c2532;
+        --navBgHover: #212b3b;
+        --borderMuted: #21262d;
+    }
+}
+
 body, html {
     font-family: 'Libre Franklin', sans-serif;
-    background: #ebe4cc;
-    color: #1c1c1c;
+    background: var(--pageBg);
+    color: var(--textDefault);
 }
+
+body {
+    line-height: 1.5;
+    word-wrap: break-word;
+}
+
 pre, code {
     font-family: 'Inconsolata', monospace;
 }
@@ -10,7 +38,7 @@ div.highlight {
     padding: 0.3em 1em;
 }
 a {
-    color: #188d8f;
+    color: var(--linkDefault);
 }
 h1 a {
   text-decoration: none;   
@@ -20,9 +48,8 @@ ul li {
 }
 nav {
     width: 100%;
-    background: black;
-    border-top: 1px solid #555;
-    border-bottom: 1px solid #555;
+    border-top: 1px solid var(--navBorder);
+    border-bottom: 1px solid var(--navBorder);
 }
 
 nav ul {
@@ -30,7 +57,7 @@ nav ul {
     margin: 0;
     padding: 0;
     overflow: hidden;
-    background: #444;
+    background: var(--navBg);
     line-height: 1.15;
 }
 
@@ -47,22 +74,9 @@ nav ul li a {
 }
 
 nav ul li a:hover {
-    background-color: #111;
+    background-color: var(--navBgHover);
 }
 
-
-.headerbottom {
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    width: 100%;
-}
-#contentwrap {
-    max-width: 740px;
-    margin-left: auto;
-    margin-right: auto;
-}
 .fixednav {
     position: fixed;
     top: 0;
@@ -132,7 +146,71 @@ article {
 .next_page, .prev_page, .different_page {
     text-decoration: none;
 }
-@media screen and (max-width: 520px) {
+
+#contentwrap {
+    margin-left: auto;
+    margin-right: auto;
+}
+
+ul {
+    list-style-type: square;
+}
+
+h1 {
+    margin: 0.67em 0;
+    padding-bottom: 0.3em;
+    font-size: 2em;
+    border-bottom: 1px solid var(--borderMuted);
+}
+
+h2 {
+    font-weight: 600;
+    padding-bottom: 0.3em;
+    font-size: 1.5em;
+    border-bottom: 1px solid var(--borderMuted);
+}
+
+code {
+    padding: 0.2em 0.4em;
+    margin: 0;
+    font-size: 85%;
+    background-color: rgb(175 184 193 / 20%);
+    border-radius: 6px;
+    font-family: ui-monospace,SFMono-Regular,SF Mono,Menlo,Consolas,Liberation Mono,monospace;
+}
+
+pre.highlight code {
+    padding: inherit;
+    margin: inherit;
+    font-size: inherit;
+    background-color: inherit;
+    border-radius: inherit;
+    font-family: inherit;
+}
+
+.noBorder {
+    border: none;
+}
+
+.noMargin {
+    margin: 0;
+}
+
+@media screen and (min-width: 980px) {
+    .headerbottom {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        width: 100%;
+    }
+
+    #contentwrap {
+        max-width: 980px;
+    }
+}
+
+@media screen and (max-width: 980px) {
     nav ul li {
         float: none;
         display: none;
@@ -182,5 +260,74 @@ article {
     .responsivepad {
         display: none;
     }
+
+    #contentwrap p, #contentwrap h1, #contentwrap h2, #contentwrap h3, #contentwrap h4  {
+        padding-left: 6px;
+        padding-right: 6px;
+    }
+
+    .github-icon { 
+        -webkit-mask-image: none;
+    }
+
+    div.highlight {
+        padding: 1px 6px 1px 6px;
+    }
+
+    #contentwrap h3 {
+        margin-bottom: 8px;
+    }
+
+    ul {
+        padding-left: 30px;
+        margin-top: 0;
+    }
+
+    .site-title {
+        display: flex;
+        justify-content: center;
+    }
 }
 
+@media (prefers-color-scheme: light) {
+    code {
+        color: #24292f;
+    }
+}
+
+@media (prefers-color-scheme: dark) {
+    ::-webkit-scrollbar {
+        width: 15px;
+    }
+
+    ::-webkit-scrollbar-track {
+        background: #202020;
+        border-left: 1px solid #2c2c2c;
+    }
+
+    ::-webkit-scrollbar-thumb {
+        background: #3e3e3e;
+        border: solid 3px #202020;
+        border-radius: 7px;
+    }
+
+    ::-webkit-scrollbar-thumb:hover {
+        background: #4F4F4F;
+    }
+
+    hr {
+        box-sizing: content-box;
+        overflow: hidden;
+        background: transparent;
+        border-bottom: 1px solid #21262d;
+        height: 0.25em;
+        padding: 0;
+        margin: 24px 0;
+        background-color: #30363d;
+        border: 0;
+    }
+
+    code {
+        background-color: rgba(110,118,129,0.4);
+    }
+}
