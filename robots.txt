@@ -1,0 +1,1 @@
+Sitemap: https://wattlescript.github.io/sitemap.xml

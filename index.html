@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Home - WattleScript</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="/assets/css/normalize.css"/>
+    <link href="https://fonts.googleapis.com/css?family=Libre+Franklin&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Inconsolata&display=swap" rel="stylesheet"> 
+    <link rel="stylesheet" href="/assets/css/main.css"/>
+    <link rel="stylesheet" href="/assets/css/syntax.css"/>
+    <link rel="shortcut icon" href="favicon.ico" />
+    
+    <script type="text/javascript">
+//Small script to do the fixed header
+function findOffset(element) {
+  var top = 0, left = 0;
+
+  do {
+    top += element.offsetTop  || 0;
+    left += element.offsetLeft || 0;
+    element = element.offsetParent;
+  } while(element);
+
+  return {
+    top: top,
+    left: left
+  };
+}
+window.onload = function () {
+  var stickyHeader = document.getElementById('nav');
+  var contentPadding = document.getElementById('contentpadding');
+  var padHeight = stickyHeader.offsetHeight + "px";
+  contentPadding.style.height = padHeight;
+  var headerOffset = findOffset(stickyHeader);
+  window.onscroll = function() {
+    var bodyScrollTop = document.documentElement.scrollTop || document.body.scrollTop;
+    if (bodyScrollTop > headerOffset) {
+      stickyHeader.classList.add('fixednav');
+    } else {
+      stickyHeader.classList.remove('fixednav');
+    }
+  };
+};
+  </script>
+  </head>
+  <body>
+    <div class="headerfill">
+    <div class="headerbottom">
+        <h1 class="noBorder noMargin logoHeading">
+    <a href="/" class="site-title m10sm">
+        <picture>
+            <source srcset="/assets/images/wattle-logo-dark.svg" media="(prefers-color-scheme: dark)">
+            <img src="/assets/images/wattle-logo.svg" alt="WattleScript" class="logoImg">
+        </picture>
+    </a>
+</h1>
+
+        <nav id="nav">
+             <ul class="navUl" id="navUl">
+    <li class="renderOnSm">
+        <input id="menutoggle" class="menucheck" type="checkbox" onclick="toggleNav()">
+        <label for="menutoggle" class="menutext">Menu</label>
+    </li>
+    
+        <li><a href="/">Home</a></li>
+    
+        <li><a href="/about_wattle">About Wattle</a></li>
+    
+        <li><a href="/license">License</a></li>
+    
+    <li>
+        <a href="https://github.com/WattleScript/wattlescript">
+            <div class="github-icon">Github</div>
+        </a>
+    </li>
+ </ul>
+<script>
+    function toggleNav() {
+        document.getElementById("navUl").classList.toggle("navChecked");
+    }
+</script>
+        </nav>
+    </div>
+    </div>
+    <div id="contentpadding" class="responsivepad"></div>
+    <div id="page">
+    <div id="contentwrap">
+    <h1 id="wattlescript">WattleScript</h1>
+
+<p>WattleScript is a scripting engine written in C# for  runtimes supporting .NET Standard 2.0 and newer. (.NET 4.7.2+, .NET Core 3.1+). It is a dual-language environment, providing support for Lua 5.2 code as well as its own language, Wattle.</p>
+
+<p>Using WattleScript is as easy as:</p>
+
+<div class="language-cs highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kt">var</span> <span class="n">script</span> <span class="p">=</span> <span class="k">new</span> <span class="nf">Script</span><span class="p">();</span>
+<span class="n">script</span><span class="p">.</span><span class="nf">DoString</span><span class="p">(</span><span class="s">"print('Hello World!')"</span><span class="p">);</span>
+</code></pre></div></div>
+
+<p>WattleScript is based off the tried and tested <a href="https://moonsharp.org">MoonSharp</a> project, inheriting its VM design and test suite. The design focuses on easy and fast interop with .NET objects and functions.</p>
+
+<h2 id="features">Features</h2>
+
+<ul>
+  <li><a href="about_wattle">Wattle</a> scripting language.</li>
+  <li>Lua mode 99% compatible with Lua 5.2, differences documented <a href="lua_differences">here</a>.</li>
+  <li>Easily configured sandbox for safe execution of untrusted scripts.</li>
+  <li>Minimal garbage generation at runtime.</li>
+  <li>No external dependencies.</li>
+  <li>Easy and performant interop with CLR objects, with runtime code generation where supported.</li>
+  <li>Source Generator for AOT interop.</li>
+  <li>Support for awaiting on returned values.</li>
+  <li>Supports dumping/loading bytecode.</li>
+  <li>Support for the complete Lua standard library with very few exceptions (mostly located in the <code class="highlighter-rouge">debug</code> module).</li>
+  <li><code class="highlighter-rouge">json</code> module for loading json into tables safely at runtime.</li>
+</ul>
+
+<h2 id="license">License</h2>
+
+<p>WattleScript is licensed under the 3-clause BSD License. See <a href="license">LICENSE</a> for details.</p>
+
+
+    </div>
+    </div>
+    <script type="text/javascript" src="/assets/js/lightbox.js"></script>
+    <link rel="stylesheet" href="/assets/css/lightbox.css">
+    </div>
+  </body>
+</html>

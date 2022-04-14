@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>About Wattle - WattleScript</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="/assets/css/normalize.css"/>
+    <link href="https://fonts.googleapis.com/css?family=Libre+Franklin&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Inconsolata&display=swap" rel="stylesheet"> 
+    <link rel="stylesheet" href="/assets/css/main.css"/>
+    <link rel="stylesheet" href="/assets/css/syntax.css"/>
+    <link rel="shortcut icon" href="favicon.ico" />
+    
+    <script type="text/javascript">
+//Small script to do the fixed header
+function findOffset(element) {
+  var top = 0, left = 0;
+
+  do {
+    top += element.offsetTop  || 0;
+    left += element.offsetLeft || 0;
+    element = element.offsetParent;
+  } while(element);
+
+  return {
+    top: top,
+    left: left
+  };
+}
+window.onload = function () {
+  var stickyHeader = document.getElementById('nav');
+  var contentPadding = document.getElementById('contentpadding');
+  var padHeight = stickyHeader.offsetHeight + "px";
+  contentPadding.style.height = padHeight;
+  var headerOffset = findOffset(stickyHeader);
+  window.onscroll = function() {
+    var bodyScrollTop = document.documentElement.scrollTop || document.body.scrollTop;
+    if (bodyScrollTop > headerOffset) {
+      stickyHeader.classList.add('fixednav');
+    } else {
+      stickyHeader.classList.remove('fixednav');
+    }
+  };
+};
+  </script>
+  </head>
+  <body>
+    <div class="headerfill">
+    <div class="headerbottom">
+        <h1 class="noBorder noMargin logoHeading">
+    <a href="/" class="site-title m10sm">
+        <picture>
+            <source srcset="/assets/images/wattle-logo-dark.svg" media="(prefers-color-scheme: dark)">
+            <img src="/assets/images/wattle-logo.svg" alt="WattleScript" class="logoImg">
+        </picture>
+    </a>
+</h1>
+
+        <nav id="nav">
+             <ul class="navUl" id="navUl">
+    <li class="renderOnSm">
+        <input id="menutoggle" class="menucheck" type="checkbox" onclick="toggleNav()">
+        <label for="menutoggle" class="menutext">Menu</label>
+    </li>
+    
+        <li><a href="/">Home</a></li>
+    
+        <li><a href="/about_wattle">About Wattle</a></li>
+    
+        <li><a href="/license">License</a></li>
+    
+    <li>
+        <a href="https://github.com/WattleScript/wattlescript">
+            <div class="github-icon">Github</div>
+        </a>
+    </li>
+ </ul>
+<script>
+    function toggleNav() {
+        document.getElementById("navUl").classList.toggle("navChecked");
+    }
+</script>
+        </nav>
+    </div>
+    </div>
+    <div id="contentpadding" class="responsivepad"></div>
+    <div id="page">
+    <div id="contentwrap">
+    <h1 id="about-wattle">About Wattle</h1>
+
+<p>Wattle is a scripting language for the WattleScript VM inspired by JavaScript, C# and Lua.</p>
+
+<h2 id="using-wattle">Using Wattle</h2>
+
+<p>To change your script’s language to Wattle, simply change the <code class="highlighter-rouge">Syntax</code> option in the <code class="highlighter-rouge">ScriptOptions</code> class to <code class="highlighter-rouge">ScriptSyntax.Wattle</code>.</p>
+
+
+    </div>
+    </div>
+    <script type="text/javascript" src="/assets/js/lightbox.js"></script>
+    <link rel="stylesheet" href="/assets/css/lightbox.css">
+    </div>
+  </body>
+</html>

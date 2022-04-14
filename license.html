@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>License - WattleScript</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="/assets/css/normalize.css"/>
+    <link href="https://fonts.googleapis.com/css?family=Libre+Franklin&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Inconsolata&display=swap" rel="stylesheet"> 
+    <link rel="stylesheet" href="/assets/css/main.css"/>
+    <link rel="stylesheet" href="/assets/css/syntax.css"/>
+    <link rel="shortcut icon" href="favicon.ico" />
+    
+    <script type="text/javascript">
+//Small script to do the fixed header
+function findOffset(element) {
+  var top = 0, left = 0;
+
+  do {
+    top += element.offsetTop  || 0;
+    left += element.offsetLeft || 0;
+    element = element.offsetParent;
+  } while(element);
+
+  return {
+    top: top,
+    left: left
+  };
+}
+window.onload = function () {
+  var stickyHeader = document.getElementById('nav');
+  var contentPadding = document.getElementById('contentpadding');
+  var padHeight = stickyHeader.offsetHeight + "px";
+  contentPadding.style.height = padHeight;
+  var headerOffset = findOffset(stickyHeader);
+  window.onscroll = function() {
+    var bodyScrollTop = document.documentElement.scrollTop || document.body.scrollTop;
+    if (bodyScrollTop > headerOffset) {
+      stickyHeader.classList.add('fixednav');
+    } else {
+      stickyHeader.classList.remove('fixednav');
+    }
+  };
+};
+  </script>
+  </head>
+  <body>
+    <div class="headerfill">
+    <div class="headerbottom">
+        <h1 class="noBorder noMargin logoHeading">
+    <a href="/" class="site-title m10sm">
+        <picture>
+            <source srcset="/assets/images/wattle-logo-dark.svg" media="(prefers-color-scheme: dark)">
+            <img src="/assets/images/wattle-logo.svg" alt="WattleScript" class="logoImg">
+        </picture>
+    </a>
+</h1>
+
+        <nav id="nav">
+             <ul class="navUl" id="navUl">
+    <li class="renderOnSm">
+        <input id="menutoggle" class="menucheck" type="checkbox" onclick="toggleNav()">
+        <label for="menutoggle" class="menutext">Menu</label>
+    </li>
+    
+        <li><a href="/">Home</a></li>
+    
+        <li><a href="/about_wattle">About Wattle</a></li>
+    
+        <li><a href="/license">License</a></li>
+    
+    <li>
+        <a href="https://github.com/WattleScript/wattlescript">
+            <div class="github-icon">Github</div>
+        </a>
+    </li>
+ </ul>
+<script>
+    function toggleNav() {
+        document.getElementById("navUl").classList.toggle("navChecked");
+    }
+</script>
+        </nav>
+    </div>
+    </div>
+    <div id="contentpadding" class="responsivepad"></div>
+    <div id="page">
+    <div id="contentwrap">
+    <h1 id="bsd-3-clause-license">BSD 3-Clause License</h1>
+
+<p>Copyright (c) 2014-2022 The WattleScript Authors, as shown by the AUTHORS file.
+All rights reserved.</p>
+
+<p>Redistribution and use in source and binary forms, with or without
+modification, are permitted provided that the following conditions are met:</p>
+
+<ul>
+  <li>
+    <p>Redistributions of source code must retain the above copyright notice, this
+list of conditions and the following disclaimer.</p>
+  </li>
+  <li>
+    <p>Redistributions in binary form must reproduce the above copyright notice,
+this list of conditions and the following disclaimer in the documentation
+and/or other materials provided with the distribution.</p>
+  </li>
+  <li>
+    <p>Neither the name of the copyright holder nor the names of its
+contributors may be used to endorse or promote products derived from
+this software without specific prior written permission.</p>
+  </li>
+</ul>
+
+<p>THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS “AS IS”
+AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
+IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE
+DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE
+FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL
+DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR
+SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER
+CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY,
+OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
+OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.</p>
+
+<p>Parts of the string library are based on the KopiLua project (https://github.com/NLua/KopiLua)
+Copyright (c) 2012 LoDC</p>
+
+<p>The MoonSharp icon is (c) Isaac, 2014-2015</p>
+
+    </div>
+    </div>
+    <script type="text/javascript" src="/assets/js/lightbox.js"></script>
+    <link rel="stylesheet" href="/assets/css/lightbox.css">
+    </div>
+  </body>
+</html>

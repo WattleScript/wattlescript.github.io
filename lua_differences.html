@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Differences between WattleScript Lua and Lua - WattleScript</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="/assets/css/normalize.css"/>
+    <link href="https://fonts.googleapis.com/css?family=Libre+Franklin&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Inconsolata&display=swap" rel="stylesheet"> 
+    <link rel="stylesheet" href="/assets/css/main.css"/>
+    <link rel="stylesheet" href="/assets/css/syntax.css"/>
+    <link rel="shortcut icon" href="favicon.ico" />
+    
+    <script type="text/javascript">
+//Small script to do the fixed header
+function findOffset(element) {
+  var top = 0, left = 0;
+
+  do {
+    top += element.offsetTop  || 0;
+    left += element.offsetLeft || 0;
+    element = element.offsetParent;
+  } while(element);
+
+  return {
+    top: top,
+    left: left
+  };
+}
+window.onload = function () {
+  var stickyHeader = document.getElementById('nav');
+  var contentPadding = document.getElementById('contentpadding');
+  var padHeight = stickyHeader.offsetHeight + "px";
+  contentPadding.style.height = padHeight;
+  var headerOffset = findOffset(stickyHeader);
+  window.onscroll = function() {
+    var bodyScrollTop = document.documentElement.scrollTop || document.body.scrollTop;
+    if (bodyScrollTop > headerOffset) {
+      stickyHeader.classList.add('fixednav');
+    } else {
+      stickyHeader.classList.remove('fixednav');
+    }
+  };
+};
+  </script>
+  </head>
+  <body>
+    <div class="headerfill">
+    <div class="headerbottom">
+        <h1 class="noBorder noMargin logoHeading">
+    <a href="/" class="site-title m10sm">
+        <picture>
+            <source srcset="/assets/images/wattle-logo-dark.svg" media="(prefers-color-scheme: dark)">
+            <img src="/assets/images/wattle-logo.svg" alt="WattleScript" class="logoImg">
+        </picture>
+    </a>
+</h1>
+
+        <nav id="nav">
+             <ul class="navUl" id="navUl">
+    <li class="renderOnSm">
+        <input id="menutoggle" class="menucheck" type="checkbox" onclick="toggleNav()">
+        <label for="menutoggle" class="menutext">Menu</label>
+    </li>
+    
+        <li><a href="/">Home</a></li>
+    
+        <li><a href="/about_wattle">About Wattle</a></li>
+    
+        <li><a href="/license">License</a></li>
+    
+    <li>
+        <a href="https://github.com/WattleScript/wattlescript">
+            <div class="github-icon">Github</div>
+        </a>
+    </li>
+ </ul>
+<script>
+    function toggleNav() {
+        document.getElementById("navUl").classList.toggle("navChecked");
+    }
+</script>
+        </nav>
+    </div>
+    </div>
+    <div id="contentpadding" class="responsivepad"></div>
+    <div id="page">
+    <div id="contentwrap">
+    <h1 id="differences-between-wattlescript-lua-and-lua">Differences between WattleScript Lua and Lua</h1>
+
+<p>WattleScript’s Lua mode contains minor differences and a few additions, inherited from MoonSharp.</p>
+
+<h3 id="list-of-differences">List of Differences</h3>
+
+<ul>
+  <li>Strings are Unicode: some caution is required if code uses strings to store binary data. On the other hand, strings used as real strings are a lot easier to use.</li>
+  <li>Garbage Collection is different, as WattleScript makes use of the .NET GC. Notably this makes <code class="highlighter-rouge">collectgarbage()</code> a no-op.</li>
+  <li>Compatibility is source-only, WattleScript cannot load luac binaries.</li>
+  <li>Slight differences in error messages.</li>
+  <li>Function names are tracked at function declaration, not backtracked at function calls like in Lua (noticeable only when debugging)</li>
+</ul>
+
+<h3 id="list-of-additions">List of Additions</h3>
+
+<ul>
+  <li>Multiple expressions can be used as indices but the value to be indexed must be a userdata, or a table resolving to userdata through the metatable (but without using metamethods). So, for example, <code class="highlighter-rouge">x[1,2,i]</code> is parsed correctly but might raise an error if <code class="highlighter-rouge">x</code> is not a userdata.</li>
+  <li>Metalua short anonymous functions (lambda-style) are supported. So <code class="highlighter-rouge">|x, y| x + y</code> is shorthand for <code class="highlighter-rouge">function(x,y) return x+y end</code>.</li>
+  <li>A non-yieldable <code class="highlighter-rouge">__iterator</code> metamethod has been added. It’s called if the argument <code class="highlighter-rouge">f</code> of a <code class="highlighter-rouge">for ... in ...</code> loop is not actually a function.</li>
+  <li>A default iterator is provided if the argument <code class="highlighter-rouge">f</code> of a <code class="highlighter-rouge">for ... in ...</code> loop is a table without <code class="highlighter-rouge">__iterator</code> or <code class="highlighter-rouge">__call</code> metamethods. The provided result is <code class="highlighter-rouge">value, key</code> unlike <code class="highlighter-rouge">ipairs</code> or <code class="highlighter-rouge">pairs</code>.</li>
+  <li><code class="highlighter-rouge">\u{xxx}</code> escapes, where x are up to 8 hexadecimal digits, are supported inside strings and will output the specified Unicode codepoint, as it does in Lua 5.3</li>
+  <li><code class="highlighter-rouge">loadsafe</code> and <code class="highlighter-rouge">loadfilesafe</code> methods, same as <code class="highlighter-rouge">load</code> and <code class="highlighter-rouge">loadfile</code> but defaulting to the current top-of-the-stack <code class="highlighter-rouge">_ENV</code> instead of the default one, for easier sandboxing</li>
+  <li>The <code class="highlighter-rouge">dynamic.eval</code> and <code class="highlighter-rouge">dynamic.prepare</code> functions to handle dynamic expressions</li>
+  <li><code class="highlighter-rouge">string.unicode</code> method, just like <code class="highlighter-rouge">string.byte</code> but returning a whole unicode codepoint</li>
+  <li><code class="highlighter-rouge">string.contains</code>, <code class="highlighter-rouge">string.startsWith</code> and <code class="highlighter-rouge">string.endsWith</code> methods allow easier and faster performing string ops without having to rely on patterns for simple scenarios</li>
+  <li>The <code class="highlighter-rouge">json</code> module to support JSON&lt;-&gt;table conversions</li>
+</ul>
+
+
+    </div>
+    </div>
+    <script type="text/javascript" src="/assets/js/lightbox.js"></script>
+    <link rel="stylesheet" href="/assets/css/lightbox.css">
+    </div>
+  </body>
+</html>
