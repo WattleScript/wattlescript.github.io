@@ -196,6 +196,22 @@ pre.highlight code {
     margin: 0;
 }
 
+#booknav {
+	margin: 0.25em 0.5em; /*Provides space around the table of content*/
+	padding: 0.25 0.5em;
+	border: 1px solid grey; /* Adds a grey border with a size of one pixel. */
+	display: block; /* Makes the TOC an inline-block element to prevent it from taking the while space */
+	border-radius: 5px; /* Makes the element rounded by given a 5px radius*/
+    float: right;
+}
+#booknav h3 {
+    text-align: center;
+}
+#booknav ul {
+    padding: 0 1.5em;
+    margin: 0;
+}
+
 @media screen and (min-width: 980px) {
     .headerbottom {
         position: absolute;
@@ -287,6 +303,10 @@ pre.highlight code {
 
     nav ul.navChecked li {
         display: block;
+    }
+
+    #booknav {
+        float: none;
     }
 }
 

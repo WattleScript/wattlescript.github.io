@@ -1,0 +1,14 @@
+---
+layout: default
+---
+<h1> {{ page.title }}</h1>
+<div id="booknav">
+        <h3>Contents</h3>
+<ul>
+{% for item in site.data.book.docs %}
+        <li><a href="{{ item.url }}">{{ item.title }}</a></li>
+{% endfor %}
+</ul>
+<br/>
+</div>
+{{ content }}
